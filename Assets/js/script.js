@@ -1,4 +1,4 @@
-document.write('<p>Estadisticas centro medico ñuñoa</p>');
+
 
 let Radiologia = [
     {hora: '11:00', especialista: 'IGNACIO SCHULZ', paciente: 'FRANCISCA ROJAS', rut: '9878782-1', prevision: 'FONASA'},
@@ -57,23 +57,46 @@ for(var i = 0; i< Radiologia.length; i++){
     texto += `
     <tr>
     <td>${Radiologia[i].hora}</td>
-    <td><${Radiologia[i].especialista}/td>
-    <td><${Radiologia[i].paciente}/td>
-    <td><${Radiologia[i].rut}/td>
+    <td>${Radiologia[i].especialista}</td>
+    <td>${Radiologia[i].paciente}</td>
+    <td>${Radiologia[i].rut}</td>
     <td>${Radiologia[i].prevision}</td>
     </tr>
     `;
 }
- 
-
+for(var i = 0; i< Traumatologia.length; i++){
+    texto2 += `
+    <tr>
+    <td>${Traumatologia[i].hora}</td>
+    <td>${Traumatologia[i].especialista}</td>
+    <td>${Traumatologia[i].paciente}</td>
+    <td>${Traumatologia[i].rut}</td>
+    <td>${Traumatologia[i].prevision}</td>
+    </tr>
+    `;
+}
+for(var i = 0; i< Dental.length; i++){
+    texto3 += `
+    <tr>
+    <td>${Dental[i].hora}</td>
+    <td>${Dental[i].especialista}</td>
+    <td>${Dental[i].paciente}</td>
+    <td>${Dental[i].rut}</td>
+    <td>${Dental[i].prevision}</td>
+    </tr>
+    `;
+}
+document.write('<h1>Estadisticas centro medico ñuñoa</h1>');
 
 document.getElementById("radiologia").innerHTML = texto
+document.getElementById("traumatologia").innerHTML = texto2
+document.getElementById("dental").innerHTML = texto3
 
-document.write(`<p>Cantidad de atenciones para Radiología: ${radiologia.length}</p>`);
-document.write(`<p>Cantidad de atenciones para Traumatología: ${traumatologia.length}</p>`);
-document.write(`<p>Cantidad de atenciones para Dental: ${dental.length}</p>`);
+document.write(`<p>Cantidad de atenciones para Radiología: ${Radiologia.length}</p>`);
+document.write(`<p>Cantidad de atenciones para Traumatología: ${Traumatologia.length}</p>`);
+document.write(`<p>Cantidad de atenciones para Dental: ${Dental.length}</p>`);
 
 
-document.write(`<p>Primera atencion: ${radiologia[0].paciente} - ${radiologia[0].prevision} | Última atención: ${radiologia[radiologia.length -1].paciente} - ${radiologia[radiologia.length -1].prevision}.</p>`);
-document.write(`<p>Primera atencion: ${traumatologia[0].paciente} - ${traumatologia[0].prevision} | Última atención: ${traumatologia[traumatologia.length -1].paciente} - ${traumatologia[traumatologia.length -1].prevision}.</p>`);
-document.write(`<p>Primera atencion: ${dental[0].paciente} - ${dental[0].prevision} | Última atención: ${dental[dental.length -1].paciente} - ${dental[dental.length -1].prevision}.</p>`);
+document.write(`<p>Primera atencion: ${Radiologia[0].paciente} - ${Radiologia[0].prevision} | Última atención: ${Radiologia[Radiologia.length -1].paciente} - ${Radiologia[Radiologia.length -1].prevision}.</p>`);
+document.write(`<p>Primera atencion: ${Traumatologia[0].paciente} - ${Traumatologia[0].prevision} | Última atención: ${Traumatologia[Traumatologia.length -1].paciente} - ${Traumatologia[Traumatologia.length -1].prevision}.</p>`);
+document.write(`<p>Primera atencion: ${Dental[0].paciente} - ${Dental[0].prevision} | Última atención: ${Dental[Dental.length -1].paciente} - ${Dental[Dental.length -1].prevision}.</p>`);
