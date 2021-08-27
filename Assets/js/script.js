@@ -27,16 +27,16 @@ let Dental = [
 ];
 
 var texto = `
-<tr>Radiologia</tr>
+<tr>
 <th>Hora</th>
 <th>Especialista</th>
 <th>Paciente</th>
 <th>Rut</th>
 <th>Prevision</th>
-`
+</tr>`
 
 var texto2 = `
-<tr>Traumatologia
+<tr>
 <th>Hora</th>
 <th>Especialista</th>
 <th>Paciente</th>
@@ -45,7 +45,7 @@ var texto2 = `
 </tr>`
 
 var texto3 = `
-<tr>Dental
+<tr>
 <th>Hora</th>
 <th>Especialista</th>
 <th>Paciente</th>
@@ -67,7 +67,7 @@ for(var i = 0; i< Radiologia.length; i++){
  
 
 
-document.getElementById("cuerpo-tabla").innerHTML = texto
+document.getElementById("radiologia").innerHTML = texto
 
 document.write(`<p>Cantidad de atenciones para Radiología: ${radiologia.length}</p>`);
 document.write(`<p>Cantidad de atenciones para Traumatología: ${traumatologia.length}</p>`);
