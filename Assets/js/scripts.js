@@ -23,8 +23,6 @@ var Dental = [
     { hora: '13:30', especialista: 'EDUARDO VIÑUELA', paciente: 'HUGO SANCHEZ', rut: '17665461-4', prevision: 'FONASA' },
     { hora: '14:00', especialista: 'RAQUEL VILLASECA', paciente: 'ANA SEPULVEDA', rut: '14441281-0', prevision: 'ISAPRE' },
 ];
-
-
 //desafio 2 punto agregar horas a traumatologia 1.-
 Traumatologia.push(
     { hora: '09:00', especialista: 'RENÉ POBLETE', paciente: 'ANA GELLONA', rut: '13123329-7', prevision: 'ISAPRE' },
@@ -44,10 +42,8 @@ Traumatologia.sort(function (a, b) {
     return 0;
 });
 // eliminar primer y ultimo radiologia
-
 Radiologia.shift();
 Radiologia.pop();
-
 var texto = `
 <tr>
 <th>Hora</th>
@@ -72,7 +68,6 @@ document.getElementById("radiologia").innerHTML = texto
 var dentales = Dental.reduce(function (acumulador, horas) {
     return acumulador + horas.hora + " - " + horas.especialista + " - " + horas.paciente + " - " + horas.rut + " - " + horas.prevision + "</br>" + "</br>";
 }, "</br>" + "</br>");
-
 document.write(`<p>Atenciones para Dental: ${dentales}</p>`);
 // lista de pacientes
 Radiologia.push({ paciente: 'FRANCISCA ROJAS' }, { paciente: 'RAMON ULLOA', prevision: 'FONASA' })
@@ -87,7 +82,6 @@ var consultas2 = Dental.reduce(function (acumulador, consulta) {
 }, " ");
 document.write(`<p>Listado de Pacientes Totales: </br> ${consultas}${consultas1}${consultas2}</p>`);
 // isapre dental
-
 var dentalfilter = Dental.filter(function (isapres) {
     return isapres.prevision == 'ISAPRE';
 });
@@ -95,9 +89,7 @@ var dentalreduce = dentalfilter.reduce(function (acumulador, isapres) {
     return acumulador + isapres.paciente + " - " + isapres.prevision + "</br>";
 }, " ");
 document.write(`<p>Prevision ISAPRE Dental: </br> ${dentalreduce}</p>`);
-
 // fonasa trauma
-
 var traumafilter = Traumatologia.filter(function (fonasa) {
     return fonasa.prevision == 'FONASA';
 });
@@ -105,8 +97,6 @@ var traumareduce = traumafilter.reduce(function (acumulador, fonasa) {
     return acumulador + fonasa.paciente + " - " + fonasa.prevision + "</br>";
 }, " ");
 document.write(`<p>Prevision Fonasa Traumatologia: </br> ${traumareduce}</p>`);
-
-
 var texto2 = `
 <tr>
 <th>Hora</th>
@@ -115,7 +105,6 @@ var texto2 = `
 <th>Rut</th>
 <th>Prevision</th>
 </tr>`
-
 var texto3 = `
 <tr>
 <th>Hora</th>
@@ -124,8 +113,6 @@ var texto3 = `
 <th>Rut</th>
 <th>Prevision</th>
 </tr> `
-
-
 for (var i = 0; i < Traumatologia.length; i++) {
     texto2 += `
     <tr>
@@ -148,22 +135,12 @@ for (var i = 0; i < Dental.length; i++) {
     </tr>
     `;
 }
-//
 document.getElementById("titulo").innerHTML = titulo
-
-
 document.getElementById("traumatologia").innerHTML = texto2
 document.getElementById("dental").innerHTML = texto3
-
 document.write(`<p>Cantidad de atenciones para Radiología: ${Radiologia.length}</p>`);
 document.write(`<p>Cantidad de atenciones para Traumatología: ${Traumatologia.length}</p>`);
 document.write(`<p>Cantidad de atenciones para Dental: ${Dental.length}</p>`);
-
-
 document.write(`<p>Primera atencion: ${Radiologia[0].paciente} - ${Radiologia[0].prevision} | Última atención: ${Radiologia[Radiologia.length - 1].paciente} - ${Radiologia[Radiologia.length - 1].prevision}.</p>`);
 document.write(`<p>Primera atencion: ${Traumatologia[0].paciente} - ${Traumatologia[0].prevision} | Última atención: ${Traumatologia[Traumatologia.length - 1].paciente} - ${Traumatologia[Traumatologia.length - 1].prevision}.</p>`);
 document.write(`<p>Primera atencion: ${Dental[0].paciente} - ${Dental[0].prevision} | Última atención: ${Dental[Dental.length - 1].paciente} - ${Dental[Dental.length - 1].prevision}.</p>`);
-// Desafio 2
-
-
-
