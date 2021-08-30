@@ -22,25 +22,7 @@ var Dental = [
     {hora: '13:30', especialista: 'EDUARDO VIÑUELA',        paciente: 'HUGO SANCHEZ',   rut: '17665461-4', prevision: 'FONASA'},
     {hora: '14:00', especialista: 'RAQUEL VILLASECA',       paciente: 'ANA SEPULVEDA',  rut: '14441281-0', prevision: 'ISAPRE'},
 ];
-var texto = `
-<tr>
-<th>Hora</th>
-<th>Especialista</th>
-<th>Paciente</th>
-<th>Rut</th>
-<th>Prevision</th>
-</tr>`
-for(var i = 0; i< Radiologia.length; i++){
-    texto += `
-    <tr>
-    <td>${Radiologia[i].hora}</td>
-    <td>${Radiologia[i].especialista}</td>
-    <td>${Radiologia[i].paciente}</td>
-    <td>${Radiologia[i].rut}</td>
-    <td>${Radiologia[i].prevision}</td>
-    </tr>
-    `;
-}
+
 
 //desafio 2 punto agregar horas a traumatologia 1.-
 Traumatologia.push(
@@ -61,11 +43,31 @@ Traumatologia.sort(function (a, b) {
     return 0;
   });
 // eliminar primer y ultimo radiologia
+
 Radiologia.shift();
 Radiologia.pop();
-// imprimir dental
-document.getElementById("radiologia").innerHTML = texto
 
+var texto = `
+<tr>
+<th>Hora</th>
+<th>Especialista</th>
+<th>Paciente</th>
+<th>Rut</th>
+<th>Prevision</th>
+</tr>`
+for(var i = 0; i< Radiologia.length; i++){
+    texto += `
+    <tr>
+    <td>${Radiologia[i].hora}</td>
+    <td>${Radiologia[i].especialista}</td>
+    <td>${Radiologia[i].paciente}</td>
+    <td>${Radiologia[i].rut}</td>
+    <td>${Radiologia[i].prevision}</td>
+    </tr>
+    `;
+}
+document.getElementById("radiologia").innerHTML = texto
+// imprimir dental
 var dentales = Dental.reduce(function(acumulador, horas){
     return acumulador + horas.hora + " - " + horas.especialista + " - " + horas.paciente + " - " + horas.rut + " - " + horas.prevision + "</br>" + "</br>";
 }, "</br>"+ "</br>");
@@ -83,10 +85,12 @@ var consultas2 = Dental.reduce(function(acumulador, consulta){
     return acumulador + consulta.paciente + "</br>";
 }, " " );
 document.write(`<p>Listado de Pacientes Totales: </br> ${consultas}${consultas1}${consultas2}</p>`);
+// isapre dental
 
-
-
-
+var previsions = Dental.filter(function(isapres){
+    return isapres.prevision == "ISAPRE";
+});
+document.write(`<p>Prevision Dental: ${previsions}</p>`);
 var titulo = `<h1>Estadisticas centro medico ñuñoa</h1>`
 
 
