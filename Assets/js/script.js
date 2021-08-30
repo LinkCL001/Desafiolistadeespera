@@ -22,6 +22,26 @@ var Dental = [
     {hora: '13:30', especialista: 'EDUARDO VIÑUELA',        paciente: 'HUGO SANCHEZ',   rut: '17665461-4', prevision: 'FONASA'},
     {hora: '14:00', especialista: 'RAQUEL VILLASECA',       paciente: 'ANA SEPULVEDA',  rut: '14441281-0', prevision: 'ISAPRE'},
 ];
+var texto = `
+<tr>
+<th>Hora</th>
+<th>Especialista</th>
+<th>Paciente</th>
+<th>Rut</th>
+<th>Prevision</th>
+</tr>`
+for(var i = 0; i< Radiologia.length; i++){
+    texto += `
+    <tr>
+    <td>${Radiologia[i].hora}</td>
+    <td>${Radiologia[i].especialista}</td>
+    <td>${Radiologia[i].paciente}</td>
+    <td>${Radiologia[i].rut}</td>
+    <td>${Radiologia[i].prevision}</td>
+    </tr>
+    `;
+}
+
 //desafio 2 punto agregar horas a traumatologia 1.-
 Traumatologia.push(
     {hora: '09:00',  especialista: 'RENÉ POBLETE', paciente: 'ANA GELLONA',     rut: '13123329-7', prevision: 'ISAPRE'},
@@ -44,29 +64,31 @@ Traumatologia.sort(function (a, b) {
 Radiologia.shift();
 Radiologia.pop();
 // imprimir dental
-
+document.getElementById("radiologia").innerHTML = texto
 
 var dentales = Dental.reduce(function(acumulador, horas){
     return acumulador + horas.hora + " - " + horas.especialista + " - " + horas.paciente + " - " + horas.rut + " - " + horas.prevision + "</br>" + "</br>";
-}, "</br> ");
-
-
-
+}, "</br>"+ "</br>");
 
 document.write(`<p>Atenciones para Dental: ${dentales}</p>`);
+// lista de pacientes
+Radiologia.push({paciente: 'FRANCISCA ROJAS'},{paciente: 'RAMON ULLOA'})
+var consultas = Radiologia.reduce(function(acumulador, consulta){
+    return acumulador + consulta.paciente + "</br>";
+}, " ");
+var consultas1 = Traumatologia.reduce(function(acumulador, consulta){
+    return acumulador + consulta.paciente + "</br>";
+}, " " );
+var consultas2 = Dental.reduce(function(acumulador, consulta){
+    return acumulador + consulta.paciente + "</br>";
+}, " " );
+document.write(`<p>Listado de Pacientes Totales: </br> ${consultas}${consultas1}${consultas2}</p>`);
+
 
 
 
 var titulo = `<h1>Estadisticas centro medico ñuñoa</h1>`
 
-var texto = `
-<tr>
-<th>Hora</th>
-<th>Especialista</th>
-<th>Paciente</th>
-<th>Rut</th>
-<th>Prevision</th>
-</tr>`
 
 var texto2 = `
 <tr>
@@ -86,17 +108,7 @@ var texto3 = `
 <th>Prevision</th>
 </tr> `
 
-for(var i = 0; i< Radiologia.length; i++){
-    texto += `
-    <tr>
-    <td>${Radiologia[i].hora}</td>
-    <td>${Radiologia[i].especialista}</td>
-    <td>${Radiologia[i].paciente}</td>
-    <td>${Radiologia[i].rut}</td>
-    <td>${Radiologia[i].prevision}</td>
-    </tr>
-    `;
-}
+
 for(var i = 0; i< Traumatologia.length; i++){
     texto2 += `
     <tr>
@@ -122,7 +134,7 @@ for(var i = 0; i< Dental.length; i++){
 //
 document.getElementById("titulo").innerHTML = titulo
 
-document.getElementById("radiologia").innerHTML = texto
+
 document.getElementById("traumatologia").innerHTML = texto2
 document.getElementById("dental").innerHTML = texto3
 

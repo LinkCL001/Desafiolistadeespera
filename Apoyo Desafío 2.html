@@ -58,7 +58,22 @@ traumatologia.sort(function (a, b) {
 radiologia.shift();
 radiologia.pop();
 //Imprimir en la página HTML, mediante document.write y/o la funciones que estime conveniente, la lista de consultas médicas de Dental.
-var dentaljoin = dental.join(" - ");
+var dentales = dental.reduce(function(acumulador, horas){
+    return acumulador + horas.hora + " - " + horas.especialista + " - " + horas.paciente + " - " + horas.rut + " - " + horas.prevision + "</br>" + "</br>";
+}, "</br> ");
+
+document.write(`<p>Atenciones para Dental: ${dentales}</p>`);
+//Imprimir un listado total de todos los pacientes 
+
+var consultas = radiologia.concat(traumatologia, dental)
+
+document.write(`<p>Listado de Pacientes: ${consultas}</p>`);
+
+//Filtrar pacientes Isapre de consulta medica Dental.
+
+
+//Filtrar pacientes que indican ser Fonasa en la lista de Traumatologia.
+
 
 //Agregar código para el desafio 2 aquí
 
