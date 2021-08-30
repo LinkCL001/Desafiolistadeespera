@@ -87,10 +87,16 @@ var consultas2 = Dental.reduce(function(acumulador, consulta){
 document.write(`<p>Listado de Pacientes Totales: </br> ${consultas}${consultas1}${consultas2}</p>`);
 // isapre dental
 
-var previsions = Dental.filter(function(isapres){
-    return isapres.prevision == "ISAPRE";
+
+//var dentalreduce = Dental.reduce(function(acumulador, isapre){
+//    return acumulador + isapre.paciente + " - " + isapre.prevision;
+//});
+var dentalfind = Dental.find(function(isapre){
+    return isapre.prevision == 'ISAPRE';
+
 });
-document.write(`<p>Prevision Dental: ${previsions}</p>`);
+
+document.write(`<p>Prevision Dental: ${dentalfind}</p>`);
 var titulo = `<h1>Estadisticas centro medico ñuñoa</h1>`
 
 
