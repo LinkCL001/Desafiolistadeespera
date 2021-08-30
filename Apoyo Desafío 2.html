@@ -71,11 +71,23 @@ document.write(`<p>Listado de Pacientes: ${consultas}</p>`);
 
 //Filtrar pacientes Isapre de consulta medica Dental.
 
-
+var dentalfilter = dental.filter(function(isapres){
+    return isapres.prevision == 'ISAPRE';
+});
+var dentalreduce = dentalfilter.reduce(function(acumulador, isapres){
+    return acumulador + isapres.paciente + " - " + isapres.prevision + "</br>";
+}, " ");
+document.write(`<p>Prevision ISAPRE Dental: </br> ${dentalreduce}</p>`);
 
 //Filtrar pacientes que indican ser Fonasa en la lista de Traumatologia.
 
-
+var traumafilter = traumatologia.filter(function(fonasa){
+    return fonasa.prevision == 'FONASA';
+});
+var traumareduce = traumafilter.reduce(function(acumulador, fonasa){
+    return acumulador + fonasa.paciente + " - " + fonasa.prevision + "</br>";
+}, " ");
+document.write(`<p>Prevision Fonasa Traumatologia: </br> ${traumareduce}</p>`);
 //Agregar código para el desafio 2 aquí
 
 document.write(`<p>Cantidad de atenciones para Radiología: ${radiologia.length}</p>`);
