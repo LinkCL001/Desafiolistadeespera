@@ -1,3 +1,4 @@
+var titulo = `<h1>Estadisticas centro medico ñuñoa</h1>`
 var Radiologia = [
     {hora: '11:00', especialista: 'IGNACIO SCHULZ', paciente: 'FRANCISCA ROJAS', rut: '9878782-1', prevision: 'FONASA'},
     {hora: '11:30', especialista: 'FEDERICO SUBERCASEAUX', paciente: 'PAMELA ESTRADA', rut: '15345241-3', prevision: 'ISAPRE'},
@@ -15,7 +16,7 @@ var Traumatologia = [
     {hora: '12:30', especialista: 'ANDRES KANACRI',      paciente: 'MARCIAL SUAZO',     rut: '11254785-5', prevision: 'ISAPRE'},
 ];
 var Dental = [
-    {hora: '08:30',  especialista: 'ANDREA ZUÑIGA',          paciente: 'MARCELA RETAMAL',rut: '11123425-6', prevision: 'ISAPRE'},
+    {hora: '08:30', especialista: 'ANDREA ZUÑIGA',          paciente: 'MARCELA RETAMAL',rut: '11123425-6', prevision: 'ISAPRE'},
     {hora: '11:00', especialista: 'MARIA PIA ZAÑARTU',      paciente: 'ANGEL MUÑOZ',    rut: '9878789-2',  prevision: 'ISAPRE'},
     {hora: '11:30', especialista: 'SCARLETT WITTING',       paciente: 'MARIO KAST',     rut: '7998789-5',  prevision: 'FONASA'},
     {hora: '13:00', especialista: 'FRANCISCO VON TEUBER',   paciente: 'KARIN FERNANDEZ',rut: '18887662-K', prevision: 'FONASA'},
@@ -26,11 +27,11 @@ var Dental = [
 
 //desafio 2 punto agregar horas a traumatologia 1.-
 Traumatologia.push(
-    {hora: '09:00',  especialista: 'RENÉ POBLETE', paciente: 'ANA GELLONA',     rut: '13123329-7', prevision: 'ISAPRE'},
-    {hora: '09:30',  especialista: 'MARIA SOLAR', paciente: 'RAMIRO ANDRADE',     rut: '12221451-K', prevision: 'FONASA'},
-    {hora: '10:00',  especialista: 'RAUL LOYOLA', paciente: 'CARMEN ISLA',     rut: '10112348-3', prevision: 'ISAPRE'},
-    {hora: '10:30',  especialista: 'ANTONIO LARENAS', paciente: 'PABLO LOAYZA',     rut: '13123329-7', prevision: 'ISAPRE'},
-    {hora: '12:00',  especialista: 'MATIAS ARAVENA', paciente: 'SUSANA POBLETE',     rut: '14345656-6', prevision: 'FONASA'},
+    {hora: '09:00',  especialista: 'RENÉ POBLETE',          paciente: 'ANA GELLONA',     rut: '13123329-7', prevision: 'ISAPRE'},
+    {hora: '09:30',  especialista: 'MARIA SOLAR',           paciente: 'RAMIRO ANDRADE',     rut: '12221451-K', prevision: 'FONASA'},
+    {hora: '10:00',  especialista: 'RAUL LOYOLA',           paciente: 'CARMEN ISLA',     rut: '10112348-3', prevision: 'ISAPRE'},
+    {hora: '10:30',  especialista: 'ANTONIO LARENAS',       paciente: 'PABLO LOAYZA',     rut: '13123329-7', prevision: 'ISAPRE'},
+    {hora: '12:00',  especialista: 'MATIAS ARAVENA',        paciente: 'SUSANA POBLETE',     rut: '14345656-6', prevision: 'FONASA'},
 );
 //oredenar horas traumatologia
 Traumatologia.sort(function (a, b) {
@@ -74,7 +75,7 @@ var dentales = Dental.reduce(function(acumulador, horas){
 
 document.write(`<p>Atenciones para Dental: ${dentales}</p>`);
 // lista de pacientes
-Radiologia.push({paciente: 'FRANCISCA ROJAS'},{paciente: 'RAMON ULLOA'})
+Radiologia.push({paciente: 'FRANCISCA ROJAS'},{paciente: 'RAMON ULLOA', prevision: 'FONASA'})
 var consultas = Radiologia.reduce(function(acumulador, consulta){
     return acumulador + consulta.paciente + "</br>";
 }, " ");
@@ -87,17 +88,25 @@ var consultas2 = Dental.reduce(function(acumulador, consulta){
 document.write(`<p>Listado de Pacientes Totales: </br> ${consultas}${consultas1}${consultas2}</p>`);
 // isapre dental
 
-
-//var dentalreduce = Dental.reduce(function(acumulador, isapre){
-//    return acumulador + isapre.paciente + " - " + isapre.prevision;
-//});
-var dentalfind = Dental.find(function(isapre){
-    return isapre.prevision == 'ISAPRE';
-
+var dentalfilter = Dental.filter(function(isapres){
+    return isapres.prevision == 'ISAPRE';
 });
+var dentalreduce = dentalfilter.reduce(function(acumulador, isapres){
+    return acumulador + isapres.paciente + " - " + isapres.prevision + "</br>";
+}, " ");
+document.write(`<p>Prevision ISAPRE Dental: </br> ${dentalreduce}</p>`);
 
-document.write(`<p>Prevision Dental: ${dentalfind}</p>`);
-var titulo = `<h1>Estadisticas centro medico ñuñoa</h1>`
+// fonasa trauma
+
+var traumafilter = Traumatologia.filter(function(fonasa){
+    return fonasa.prevision == 'FONASA';
+});
+var traumareduce = traumafilter.reduce(function(acumulador, fonasa){
+    return acumulador + fonasa.paciente + " - " + fonasa.prevision + "</br>";
+}, " ");
+document.write(`<p>Prevision Fonasa Traumatologia: </br> ${traumareduce}</p>`);
+
+
 
 
 var texto2 = `
